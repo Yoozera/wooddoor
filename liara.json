@@ -1,6 +1,3 @@
 {
-  "platform": "django",
-  "django": {
-    "managePy": "manage.py"
-  }
+  "platform": "django"
 }

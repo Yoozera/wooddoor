@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!--About FullWidth-->
+    <section class="about-section">
+        <div class="section-outer clearfix">
+            <!--Image Column-->
+            <div class="image-column" style="background-image:url('{{ about.image.url }}');">
+                <div class="hidden-image"><img src="{{ about.image.url }}" alt="{{ about.title }}"></div>
+            </div>
+            <div class="content-column">
+                <div class="content">
+                    <!--Sec Title-->
+                    <div class="sec-title">
+                        <h2>{{ about.title }}</h2>
+                    </div>
+                    <div class="bold-text">{{ about.bold_text }}
+                    </div>
+                    <div class="text">
+                        {{ about.description|linebreaks }}
+                    </div>
+                    <a href="{% url 'products:product_list' %}" class="theme-btn btn-style-one">مشاهده همه پروژه ها</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End About FullWidth-->
+
+    <!--Fun Facts Section -->
+    <section class="fun-facts-section" style="background-image:url('{% static "images/background/3.jpg" %}');">
+        <div class="auto-container">
+
+            <div class="row clearfix grid-blocks">
+
+                {% for fact in fun_facts %}
+                    <!--Column-->
+                    <div class="column count-box col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="inner">
+                            <div class="content">
+                                <div class="count-outer">
+                                    <span class="count-text" data-speed="2000" data-stop="{{ fact.number }}">0</span>+
+                                </div>
+                                <div class="counter-title">{{ fact.title }}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+
+    <!--Team Section-->
+    <section class="team-section">
+        <div class="auto-container">
+            <!--Sec Title-->
+            <div class="sec-title">
+                <h2>اعضای ما</h2>
+            </div>
+            <div class="row clearfix grid-blocks">
+
+                {% for member in team_members %}
+                    <!--Team Member-->
+                    <div class="team-member col-md-6 col-sm-12 col-xs-12">
+                        <div class="inner-box">
+                            <div class="row clearfix">
+                                <!--Image Column-->
+                                <div class="image-column col-md-5 col-sm-5 col-xs-12">
+                                    <div class="image">
+                                        <img src="{{ member.image.url }}" alt="{{ member.name }}">
+                                    </div>
+                                </div>
+                                <!--Content Column-->
+                                <div class="content-column col-md-7 col-sm-7 col-xs-12">
+                                    <div class="content-inner">
+                                        <div class="designation">{{ member.designation }}</div>
+                                        <h3><a href="#">{{ member.name }}</a></h3>
+                                        <div class="text">{{ member.bio }}
+                                        </div>
+                                        <ul class="social-icon-one">
+                                            {% if member.facebook %}
+                                                <li><a href="{{ member.facebook }}"><span class="fa fa-facebook"></span></a>
+                                                </li>
+                                            {% endif %}
+                                            {% if member.twitter %}
+                                                <li><a href="{{ member.twitter }}"><span
+                                                        class="fa fa-twitter"></span></a></li>
+                                            {% endif %}
+                                            {% if member.linkedin %}
+                                                <li><a href="{{ member.linkedin }}"><span class="fa fa-linkedin"></span></a>
+                                                </li>
+                                            {% endif %}
+                                            {% if member.pinterest %}
+                                                <li><a href="{{ member.pinterest }}"><span
+                                                        class="fa fa-pinterest-p"></span></a></li>
+                                            {% endif %}
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+    <!--End Team Section-->
+
+    <!--Testimonail Section-->
+        <p>DEBUG: {{ bg_settings }}</p>
+<p>DEBUG: {{ bg_setting.testimonial_bg }}</p>
+        <section class="testimonial-section" style="background-image:url('{{ bg_setting.testimonial_bg.url }}');">
+        <div class="auto-container">
+            <!--Sec Title-->
+            <div class="sec-title light centered">
+                <h2>مشتریان ما را دوست دارند!</h2>
+            </div>
+            <div class="two-item-carousel owl-carousel owl-theme">
+
+                {% for testimonial in testimonials %}
+                    <!--Testimonial Block-->
+                    <div class="testimonial-block">
+                        <div class="quote-icon"><span class="icon fa fa-quote-right"></span></div>
+                        <div class="inner-box">
+                            <div class="text">{{ testimonial.text }}
+                            </div>
+                            <div class="lower-box clearfix">
+                                <div class="pull-left">
+                                    <h3>{{ testimonial.client_name }}</h3>
+                                    <div class="designation">{{ testimonial.designation }}</div>
+                                </div>
+                                <div class="pull-right">
+                                    <div class="rating">
+                                        {% for i in "12345" %}
+                                            {% if forloop.counter <= testimonial.rating %}
+                                                <span class="fa fa-star"></span>
+                                            {% else %}
+                                                <span class="fa fa-star-0"></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+    <!--End Testimonail Section-->
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!--Services Section Two-->
+    <section class="services-section-two grey-bg">
+        <div class="auto-container">
+
+            <div class="row clearfix grid-blocks">
+
+                <!--Services Block Five-->
+                {% for  service in services %}
+                    <div class="services-block-five col-md-4 col-sm-6 col-xs-12">
+                    <div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="icon-box">
+                            {% if service.icon_class %}
+                                <span class="icon {{ service.icon_class }}"></span>
+                            {% else %}
+                                <span class="glyphicon glyphicon-option-horizontal"></span>
+                            {% endif %}
+                        </div>
+                        <h3><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></h3>
+                        <div class="text">
+                            {{ service.short_description }}
+                        </div>
+                        <a class="read-more" href="{{ service.get_absolute_url }}">بیشتر بخوانید <span
+                                class="fa fa-caret-left"></span></a>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+
+
+            </div>
+
+        </div>
+    </section>
+    <!--End Services Section Two-->
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    {% include 'includes/head_links.html' %}
+
+ <style>
+    .related-posts .post-thumb {
+        float: right;
+        width: 78px;
+        height: 78px;
+        overflow: hidden;
+        margin-left: 15px;
+    }
+    .related-posts .post-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .related-posts .post {
+        display: block;
+    }
+    .related-posts .post::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="preloader"></div>
+    <!-- Main Header-->
+    {% include 'includes/header.html' %}
+    <!--End Main Header -->
+    <!--Page Title-->
+    {% block page_tittle %}
+        {% include 'includes/tittle.html' %}
+    {% endblock %}
+    <!--End Page Title-->
+    {% block content %}
+    {% endblock %}
+    <!--Main Footer-->
+    {% include 'includes/footer.html' %}
+</div>
+<!--End pagewrapper-->
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-long-arrow-up"></span></div>
+
+{% include 'includes/footer_links.html' %}
+</body>
+</html>

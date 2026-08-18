@@ -1,17 +1,26 @@
-pycache/
+# Python
 *.py[cod]
+*$py.class
+*.so
+__pycache__/
+*.egg-info/
+dist/
+build/
 
-venv/
-env/
-.venv/
-
-db.sqlite3
+# Environment
 .env
+.env.local
+.venv/
+venv/
 
-.idea/
+# IDEs
 .vscode/
+.idea/
+*.swp
 
-media/
-staticfiles/
+# Database
+db.sqlite3
 
-*.log
+# Static & Media
+/staticfiles/
+/media/

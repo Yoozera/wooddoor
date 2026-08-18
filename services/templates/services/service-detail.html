@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!--Sidebar Page Container-->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                <!--Content Side / Services Single-->
+                <div class="content-side pull-right col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <div class="services-single">
+                        <!--Images Gallery-->
+                        <div class="services-single-images">
+                            <div class="row clearfix">
+                                <div class="column col-md-8 col-sm-8 col-xs-12">
+                                    <div class="image">
+                                        <a class="lightbox-image" href="{{ service.image.url }}"
+                                           title="{{ service.name }}"><img src="{{ service.image.url }}"
+                                                                           alt="{{ service.name }}"></a>
+                                    </div>
+                                </div>
+                                {% if service.extra_image1 or service.extra_image2 %}
+                                    <div class="column col-md-4 col-sm-4 col-xs-12">
+                                        {% if service.extra_image1 %}
+                                            <div class="image">
+                                                <a class="lightbox-image" href="{{ service.extra_image1.url }}"
+                                                   title="تصویر ۱">
+                                                    <img src="{{ service.extra_image1.url }}" alt="تصویر ۱">
+                                                </a>
+                                            </div>
+                                        {% endif %}
+
+                                        {% if service.extra_image2 %}
+                                            <div class="image">
+                                                <a class="lightbox-image" href="{{ service.extra_image2.url }}"
+                                                   title="تصویر ۲">
+                                                    <img src="{{ service.extra_image2.url }}" alt="تصویر ۲">
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!--Lower Content-->
+                        <div class="lower-content">
+                            <h2>{{ service.name }}</h2>
+                            <div class="text">{{ service.description|linebreaksbr }}
+                            </div>
+                            <br>
+                            <div class="row clearfix">
+                                <div class="column col-md-6 col-sm-6 col-xs-12">
+                                    <h3>مزایا</h3>
+                                    <ul class="benefit-lists">
+
+                                        {% if service.advantages %}
+                                            <li><strong>{{ service.advantages }}</strong></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                            <!--Services Tab-->
+                            <div class="services-tab">
+                                <h2>رویکرد ما</h2>
+
+                                <div class="product-info-tabs">
+                                    <!--Product Tabs-->
+                                    <div class="prod-tabs tabs-box" id="product-tabs">
+
+                                        <!--Tab Btns-->
+                                        <ul class="tab-btns tab-buttons clearfix">
+                                            {% for step in service.steps.all %}
+                                                <li data-tab="#step-{{ step.id }}"
+                                                    class="tab-btn {% if forloop.first %}active-btn{% endif %}">{{ step.title }}</li>
+                                            {% endfor %}
+
+                                        </ul>
+
+                                        <!--Tabs Content-->
+                                        <div class="tabs-container tabs-content">
+
+                                            <!--Tab / Active Tab-->
+                                            {% for step in service.steps.all %}
+                                                <div class="tab {% if forloop.first %}active-tab{% endif %}"
+                                                     id="step-{{ step.id }}">
+                                                    <div class="row clearfix">
+
+                                                        {% if step.image %}
+                                                            <!-- اگر تصویر وجود دارد: ساختار ۵ و ۷ ستونه -->
+                                                            <div class="image-column col-md-5 col-sm-6 col-xs-12">
+                                                                <div class="image">
+                                                                    <img src="{{ step.image.url }}"
+                                                                         alt="{{ step.title }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-content-column col-md-7 col-sm-6 col-xs-12">
+                                                                <div class="text">
+                                                                    <p>{{ step.text|linebreaksbr }}</p>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <!-- اگر تصویر وجود ندارد: ساختار ۱۲ ستونه (تمام عرض) -->
+                                                            <div class="tab-content-column col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="text">
+                                                                    <p>{{ step.text|linebreaksbr }}</p>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+
+                                                    </div> <!-- پایان row -->
+                                                </div> <!-- پایان tab -->
+                                            {% empty %}
+                                                <p>مراحل فعلا تعریف نشده است.</p>
+                                            {% endfor %}
+
+
+                                            <!--Tab-->
+                                            <div class="tab" id="prod-plan">
+                                                <div class="text">
+                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                                        استفاده از طراحان گرافیک است. چاپگرها</p>
+                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
+                                                        در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
+                                                        نیاز و کاربردهای متنوع با</p>
+                                                </div>
+                                            </div>
+
+                                            <!--Tab -->
+                                            <div class="tab" id="prod-output">
+                                                <div class="row clearfix">
+                                                    <!--image column-->
+                                                    <div class="image-column col-md-5 col-sm-6 col-xs-12">
+                                                        <div class="image">
+                                                            <img src="images/resource/tab-img.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <!--tab content column-->
+                                                    <div class="tab-content-column col-md-7 col-sm-6 col-xs-12">
+                                                        <div class="text">
+                                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                                                و با استفاده از طراحان گرافیک است. چاپگرها</p>
+                                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+                                                                روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
+                                                                شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Sidebar Side-->
+                <div class="sidebar-side pull-left col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar default-sidebar">
+
+                        <!-- Sidebar Category -->
+                        <div class="sidebar-widget sidebar-category">
+                            <ul class="list">
+                                {% for s in related_services %}
+                                    <li><a href="{% url 'services:service_detail' s.slug %}">{{ s.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Sidebar Testimonial -->
+                        <!-- Sidebar Related Products Slider -->
+                        <div class="sidebar-widget sidebar-products">
+                            <h3 class="widget-title">محصولات پیشنهادی</h3> <!-- یک تیتر برای بخش اسلایدر -->
+
+                            <div class="single-item-carousel owl-carousel owl-theme">
+                                {% if related_products %}
+                                    {% for product in related_products %}
+                                        <div class="product-slide">
+                                            <!-- کلاس را از testimonial-slide به یک کلاس جدید تغییر دادیم -->
+                                            <div class="inner">
+                                                <div class="product-image">
+                                                    <!-- نمایش تصویر محصول -->
+                                                    <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                                                         style="width: 100%; height: auto;">
+                                                </div>
+                                                <div class="product-info"
+                                                     style="text-align: center; padding: 15px 0;">
+                                                    <h4 style="font-size: 16px; margin-bottom: 5px;">{{ product.name }}</h4>
+                                                    <p style="font-size: 13px; color: #666;">{{ product.short_description }}</p>
+
+                                                    <!-- لینک به صفحه جزئیات محصول -->
+                                                    <a href="{{ product.get_absolute_url }}"
+                                                       class="btn-view-product"
+                                                       style="font-size: 12px; color: #b88e2f;">مشاهده محصول</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="testimonial-slide">
+                                        <div class="inner">
+                                            <p>محصول مرتبطی یافت نشد.</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+                        <!-- Sidebar Question Box -->
+                        <div class="sidebar-widget sidebar-question">
+                            <div class="info-widget">
+                                <div class="inner">
+                                    <h3>سوالی دارید؟ <br> هم اکنون تماس بگیرید</h3>
+                                    <h2><span class="ltr-text">9130175390</span></h2>
+                                    <a href="#" class="more-detail">جزئیات بیشتر</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </aside>
+                </div>
+                <!--End Sidebar Side-->
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

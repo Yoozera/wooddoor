@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!--Sidebar Page Container-->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                <!--Content Side / Our Shop-->
+                <div class="content-side col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="our-shop">
+
+                        <!--Filter Bar-->
+                        <div class="filter-bar clearfix">
+                            <div class="title pull-left">
+                                در حال نمایش {{ page_obj.start_index }}–{{ page_obj.end_index }} از {{ paginator.count }} نتیجه
+                            </div>
+                            <div class="filters pull-right">
+                                <div class="drop-list-one">
+                                    <div class="inner clearfix">
+                                        <div class="dropdown-outer">
+                                            <a class="btn-box dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#">مرتب سازی پیشفرض</a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li><a href="?order=newest">جدیدترین</a></li>
+                                                <li><a href="?order=popular">محبوب‌ترین</a></li>
+                                                <li><a href="?order=alphabetical">الفبایی</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix grid-blocks">
+                            <!--Shop Item-->
+                            {% for product in shop_products %}
+                                <div class="shop-item col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="inner-box">
+                                        <div class="image">
+                                            <a href="{{ product.get_absolute_url }}">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </a>
+                                        </div>
+                                        <div class="lower-content">
+                                            <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+                                            <a href="{{ product.get_absolute_url }}" class="theme-btn btn-style-one">مشاهده جزئیات</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% empty %}
+                                <p>محصولی یافت نشد.</p>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <!-- Styled Pagination -->
+                    <div class="styled-pagination">
+                        <ul class="clearfix">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}{% if request.GET.order %}&order={{ request.GET.order }}{% endif %}">قبلی</a></li>
+                            {% endif %}
+                            {% for num in page_obj.paginator.page_range %}
+                                <li><a href="?page={{ num }}{% if request.GET.order %}&order={{ request.GET.order }}{% endif %}" class="{% if num == page_obj.number %}active{% endif %}">{{ num }}</a></li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a class="next" href="?page={{ page_obj.next_page_number }}{% if request.GET.order %}&order={{ request.GET.order }}{% endif %}">بعدی</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <!--End Content Side-->
+
+                <!--Sidebar Side-->
+                <div class="sidebar-side col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <aside class="sidebar default-sidebar">
+
+                        <!--Blog Category Widget-->
+                        <div class="sidebar-widget sidebar-blog-category">
+                            <div class="sidebar-title"><h2>دسته‌بندی ها</h2></div>
+                            <ul class="blog-cat">
+                                {% for cat in categories %}
+                                    <li>
+                                        <a href="{% url 'shop:category_list' cat.slug %}">
+                                            {{ cat.name }}<span>({{ cat.shop_products.count }})</span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Search -->
+                        <div class="sidebar-widget search-box">
+                            <form method="get" action="{% url 'shop:shop_list' %}">
+                                <div class="form-group">
+                                    <input type="search" name="q" value="{{ request.GET.q }}" placeholder="جستجو ..." required>
+                                    <button type="submit"><span class="icon fa fa-search"></span></button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Top Related Posts -->
+                        <div class="sidebar-widget related-posts">
+                            <div class="sidebar-title"><h2>محصولات محبوب</h2></div>
+                            {% for product in popular_products %}
+                                <div class="post">
+                                    <figure class="post-thumb"><a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt="{{ product.name }}"></a></figure>
+                                    <h4><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h4>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Popular Tags -->
+                        <div class="sidebar-widget popular-tags">
+                            <div class="sidebar-title"><h2>کلمات کلیدی</h2></div>
+                            {% for tag in all_tags %}
+                                <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+                            {% endfor %}
+                        </div>
+
+                    </aside>
+                </div>
+                <!--End Sidebar Side-->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

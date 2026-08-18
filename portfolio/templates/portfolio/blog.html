@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <!--Sidebar Page Container-->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                <!--Content Side / Our Blog-->
+                <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="our-blog">
+
+                        <!--News Block Two-->
+                        {% for portfolio in portfolios %}
+                            <div class="news-block-two">
+                                <div class="inner-box">
+                                    <div class="image">
+                                        <a href="{{ portfolio.get_absolute_url }}">
+                                            <img src="{{ portfolio.image.url }}" alt="{{ portfolio.name }}">
+                                        </a>
+                                    </div>
+                                    <div class="lower-content">
+                                        <div class="post-date">ارسال شده
+                                            در {{ portfolio.created_at|date:"d F Y" }}</div>
+                                        <h3><a href="{{ portfolio.get_absolute_url }}">{{ portfolio.name }}</a></h3>
+                                        <div class="text">{{ portfolio.short_description }}</div>
+                                        <a class="continue-reading" href="{{ portfolio.get_absolute_url }}">
+                                            ادامه مطلب <span class="fa fa-long-arrow-left"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p>هیچ پستی یافت نشد.</p>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Styled Pagination -->
+                    <div class="styled-pagination">
+                        <ul class="clearfix">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page=
+
+
+
+
+
+                                        {{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">قبلی</a>
+                                </li>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                <li>
+                                    <a href="?page=
+
+
+
+
+
+                                            {{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}"
+                                       class="{% if num == page_obj.number %}active{% endif %}">{{ num }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li><a class="next" href="?page=
+
+
+
+
+
+                                        {{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">بعدی</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Sidebar Side-->
+                <div class="sidebar-side col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar blog-sidebar">
+
+                        <!-- Search -->
+                        <div class="sidebar-widget search-box">
+                            <form method="get" action="{% url 'portfolio:portfolio_list' %}">
+                                <div class="form-group">
+                                    <input type="search" name="q" value="{{ request.GET.q }}" placeholder="جستجو ..."
+                                           required>
+                                    <button type="submit"><span class="icon fa fa-search"></span></button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!--Blog Category Widget-->
+                        <div class="sidebar-widget sidebar-blog-category">
+                            <div class="sidebar-title">
+                                <h2>دسته‌بندی ها</h2>
+                            </div>
+                            <ul class="blog-cat">
+                                {% for cat in categories %}
+                                    <li>
+                                        <a href="?category={{ cat.id }}">
+                                            {{ cat.title }}<span>({{ cat.post.count }})</span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Popular Posts -->
+                        <div class="sidebar-widget popular-posts">
+                            <div class="sidebar-title"><h2>اخبار جدید</h2></div>
+
+                            {% for news in recent_news %}
+                                <article class="post">
+                                    <figure class="post-thumb">
+                                        <a href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}"
+                                                                                   alt="{{ news.name }}"></a>
+                                    </figure>
+                                    <div class="text"><a href="{{ news.get_absolute_url }}">{{ news.name }}</a></div>
+                                    <div class="post-info">{{ news.created_at|date:"d F Y" }}</div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                        <!-- Popular Tags -->
+                        <div class="sidebar-widget popular-tags">
+                            <div class="sidebar-title"><h2>کلمات کلیدی</h2></div>
+                            {% for tag in all_tags %}
+                                <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Gallery Widget-->
+                        <div class="sidebar-widget gallery-widget">
+                            <div class="sidebar-title">
+                                <h2>اینستاگرام</h2>
+                            </div>
+                            <div class="clearfix grid-blocks">
+                                {% for img in instagram_image %}
+                                    <figure class="image">
+                                        <a href="{{ img.image.url }}" class="lightbox-image">
+                                            <img src="{{ img.image.url }}" alt="">
+                                        </a>
+                                    </figure>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </aside>
+                </div>
+                <!--End Sidebar Side-->
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

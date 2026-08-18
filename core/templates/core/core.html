@@ -1,0 +1,415 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!--Main Slider-->
+    <section class="main-slider">
+        <div class="rev_slider_wrapper fullwidthbanner-container" id="rev_slider_one_wrapper" data-source="gallery">
+            <div class="rev_slider fullwidthabanner" id="rev_slider_one" data-version="5.4.1">
+                <ul>
+                    {% for slide in sliders %}
+                    <li
+                    data-description="{{ slide.subtitle }}"
+                    data-easein="default"
+                    data-easeout="default"
+                    data-fsmasterspeed="1500"
+                    data-fsslotamount="7"
+                    data-fstransition="fade"
+                    data-hideafterloop="0"
+                    data-hideslideonmobile="off"
+                    data-masterspeed="default"
+                    data-rotate="0"
+                    data-saveperformance="off"
+                    data-slotamount="default"
+                    data-thumb="{{ slide.image.url }}"
+                    data-title="{{ slide.title }}"
+                    data-transition="parallaxvertical">
+
+                        <img
+                        alt="{{ slide.title }}"
+                        class="rev-slidebg"
+                        data-bgfit="cover"
+                        data-bgparallax="10"
+                        data-bgposition="center center"
+                        data-bgrepeat="no-repeat"
+                        data-no-retina=""
+                        src="{{ slide.image.url }}">
+
+                        <div
+                        class="tp-caption"
+                        data-paddingbottom="[0,0,0,0]"
+                        data-paddingleft="[0,0,0,0]"
+                        data-paddingright="[0,0,0,0]"
+                        data-paddingtop="[0,0,0,0]"
+                        data-responsive_offset="on"
+                        data-type="text"
+                        data-height="none"
+                        data-width="['1100','1024','400','320']"
+                        data-whitespace="normal"
+                        data-hoffset="['15','15','15','15']"
+                        data-voffset="['-30','-65','-80','-80']"
+                        data-x="['right','right','right','right']"
+                        data-y="['middle','middle','middle','middle']"
+                        data-textalign="['top','top','top','top']"
+                        data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                        style="z-index: 7; white-space: nowrap;text-transform:right;">
+                            <h2>{{ slide.title|linebreaksbr }}</h2>
+                        </div>
+
+                        {% if slide.subtitle %}
+                        <div
+                        class="tp-caption"
+                        data-paddingbottom="[0,0,0,0]"
+                        data-paddingleft="[0,0,0,0]"
+                        data-paddingright="[0,0,0,0]"
+                        data-paddingtop="[0,0,0,0]"
+                        data-responsive_offset="on"
+                        data-type="text"
+                        data-height="none"
+                        data-width="['1100','600','400','320']"
+                        data-whitespace="normal"
+                        data-hoffset="['15','15','15','15']"
+                        data-voffset="['110','60','15','0']"
+                        data-x="['right','right','right','right']"
+                        data-y="['middle','middle','middle','middle']"
+                        data-textalign="['top','top','top','top']"
+                        data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                        style="z-index: 7; white-space: nowrap;text-transform:right;">
+                            <div class="text">{{ slide.subtitle }}</div>
+                        </div>
+                        {% endif %}
+
+                        <div
+                        class="tp-caption tp-resizeme"
+                        data-paddingbottom="[0,0,0,0]"
+                        data-paddingleft="[0,0,0,0]"
+                        data-paddingright="[0,0,0,0]"
+                        data-paddingtop="[0,0,0,0]"
+                        data-responsive_offset="on"
+                        data-type="text"
+                        data-height="none"
+                        data-width="['900','600','400','320']"
+                        data-whitespace="normal"
+                        data-hoffset="['15','15','15','15']"
+                        data-voffset="['190','150','90','80']"
+                        data-x="['right','right','right','right']"
+                        data-y="['middle','middle','middle','middle']"
+                        data-textalign="['top','top','top','top']"
+                        data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                        style="z-index: 7; white-space: nowrap;text-transform:right;">
+                            {% if slide.button_link %}
+                            <a href="{{ slide.button_link }}" class="theme-btn btn-style-one">{{ slide.button_text }}</a>
+                            {% endif %}
+                        </div>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Main Slider-->
+
+    <!--Welcome Section (محصولات محبوب فروشگاه)-->
+    <section class="welcome-section">
+        <div class="auto-container">
+            <div class="welcome-title">
+                <div class="row clearfix">
+                    <div class="column col-md-3 col-sm-12 col-xs-12">
+                        <h2>به وب سایت ما <br> <span class="theme_color">خوش آمدید</span></h2>
+                    </div>
+                    <div class="column col-md-9 col-sm-12 col-xs-12">
+                        <div class="text">پرفروش‌ترین و محبوب‌ترین محصولات ما را مشاهده کنید</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix grid-blocks">
+                {% for product in popular_products %}
+                <!--Services Block-->
+                <div class="services-block col-md-4 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <div class="image wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+                        </div>
+                        <div class="lower-content">
+                            <a href="{{ product.get_absolute_url }}" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
+                            <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+                            <div class="text">{{ product.description|truncatewords:15 }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--End Welcome Section-->
+
+    <!--FullWidth Section (سرویس‌ها با آیکون)-->
+    <section class="fullwidth-section">
+        <div class="outer-section clearfix">
+            <div class="content-column">
+                <div class="content-inner">
+                    <h2>آنچه ارائه می دهیم</h2>
+                    <div class="bold-text">ما انواع خدمات ساخت درب و چارچوب و رنگ</div>
+                    <div class="text">در شرکت درب چوبی شایان انواع خدمات درب و چارچوب اعم از طراحی ساخت انواع درب روکشی آماده وانواع رنگ سیلر کیلر پلی اورتان و ... انجام میشود </div>
+                    <a href="{% url 'services:service_list' %}" class="theme-btn btn-style-two">مشاهده تمامی خدمات</a>
+                </div>
+            </div>
+            <div class="gallery-column">
+                <div class="clearfix">
+                    {% for service in services %}
+                    <!--Default Portfolio Item-->
+                    <div class="default-service-item col-md-4 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <div class="content-box">
+                                <div class="content-inner">
+                                    <div class="content">
+                                        <div class="icon-box"><span class="icon {{ service.icon_class }}"></span></div>
+                                        <h3><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End FullWidth Section-->
+
+    <!--Counter Section-->
+    <section class="counter-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="counter-column col-md-6 col-sm-12 col-xs-12">
+                    <div class="row clearfix grid-blocks">
+                        {% for fact in fun_facts %}
+                        <div class="column count-box col-md-6 col-sm-6 col-xs-12">
+                            <div class="inner">
+                                <div class="content">
+                                    <div class="count-outer">
+                                        <span class="count-text" data-speed="2000" data-stop="{{ fact.number }}">0</span>
+                                    </div>
+                                    <div class="counter-title">{{ fact.title }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="content-column col-md-6 col-sm-12 col-xs-12">
+                    <div class="content-inner">
+                        <h2>شرکت ساخت درب چوبی شایان <br> با خدمات <span class="theme_color">باکیفیت</span></h2>
+                        <div class="text">
+                            <p>تیم زبده ما همه روزه 24 ساعته در حین خدمتگذاری به مشتریان هستند</p>
+                        </div>
+                        <a href="{% url 'aboutus:about-us' %}" class="find-about">درباره ما بیشتر بدانید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Counter Section-->
+
+    <!--Project Section-->
+    <section class="project-section" style="background-image:url('{% static "images/background/1.jpg" %}');">
+        <div class="auto-container">
+            <div class="project-tab">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h2>پروژه های اخیر</h2>
+                    </div>
+                    <div class="tab-btns-box pull-right">
+                        <div class="tabs-header">
+                            <ul class="product-tab-btns clearfix">
+                                <li class="p-tab-btn active-btn" data-tab="#p-tab-all">همه</li>
+                                {% for cat in product_categories %}
+                                <li class="p-tab-btn" data-tab="#p-tab-{{ cat.id }}">{{ cat.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-tabs-content">
+                    <!--تب همه-->
+                    <div class="p-tab active-tab" id="p-tab-all">
+                        <div class="project-carousel owl-theme owl-carousel">
+                            {% for product in all_products %}
+                            <div class="gallery-item">
+                                <div class="inner-box">
+                                    <figure class="image-box"><img src="{{ product.image.url }}" alt="{{ product.name }}"></figure>
+                                    <div class="overlay-box">
+                                        <div class="overlay-inner">
+                                            <div class="content">
+                                                <a href="{{ product.image.url }}" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
+                                                <a href="{{ product.get_absolute_url }}" class="image-link"><span class="icon fa fa-link"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!--تب هر دسته-->
+                    {% for cat in product_categories %}
+                    <div class="p-tab" id="p-tab-{{ cat.id }}">
+                        <div class="project-carousel owl-theme owl-carousel">
+                            {% for product in cat.products.all %}
+                            <div class="gallery-item">
+                                <div class="inner-box">
+                                    <figure class="image-box"><img src="{{ product.image.url }}" alt="{{ product.name }}"></figure>
+                                    <div class="overlay-box">
+                                        <div class="overlay-inner">
+                                            <div class="content">
+                                                <a href="{{ product.image.url }}" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
+                                                <a href="{{ product.get_absolute_url }}" class="image-link"><span class="icon fa fa-link"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Project Section-->
+
+    <!--Process Section-->
+    <section class="process-section">
+        <div class="auto-container">
+            <div class="sec-title centered">
+                <h2>پروسه کاری ما</h2>
+            </div>
+            <div class="row clearfix grid-blocks">
+                {% for step in process_steps %}
+                <!--Services Block Two-->
+                <div class="services-block-two col-md-4 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <div class="icon-box wow zoomInStable" data-wow-delay="{{ forloop.counter0|add:0 }}00ms" data-wow-duration="2500ms">
+                            <span class="icon {{ step.icon_class }}"></span>
+                        </div>
+                        <h3><a href="#">{{ step.title }}</a></h3>
+                        <div class="text">{{ step.text }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--End Process Section-->
+
+    <!--Team Section-->
+    <section class="team-section">
+        <div class="auto-container">
+            <div class="sec-title">
+                <h2>اعضای ما</h2>
+            </div>
+            <div class="row clearfix grid-blocks">
+                {% for member in team_members %}
+                <!--Team Member-->
+                <div class="team-member col-md-6 col-sm-12 col-xs-12">
+                    <div class="inner-box">
+                        <div class="row clearfix">
+                            <div class="image-column col-md-5 col-sm-5 col-xs-12">
+                                <div class="image">
+                                    <img src="{{ member.image.url }}" alt="{{ member.name }}">
+                                </div>
+                            </div>
+                            <div class="content-column col-md-7 col-sm-7 col-xs-12">
+                                <div class="content-inner">
+                                    <div class="designation">{{ member.designation }}</div>
+                                    <h3><a href="#">{{ member.name }}</a></h3>
+                                    <div class="text">{{ member.bio }}</div>
+                                    <ul class="social-icon-one">
+                                        {% if member.facebook %}<li><a href="{{ member.facebook }}"><span class="fa fa-facebook"></span></a></li>{% endif %}
+                                        {% if member.twitter %}<li><a href="{{ member.twitter }}"><span class="fa fa-twitter"></span></a></li>{% endif %}
+                                        {% if member.linkedin %}<li><a href="{{ member.linkedin }}"><span class="fa fa-linkedin"></span></a></li>{% endif %}
+                                        {% if member.pinterest %}<li><a href="{{ member.pinterest }}"><span class="fa fa-pinterest-p"></span></a></li>{% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--End Team Section-->
+
+    <!--Testimonail Section-->
+    <section class="testimonial-section" style="background-image:url('{{ bg_settings.testimonial_bg.url }}');">
+        <div class="auto-container">
+            <div class="sec-title light centered">
+                <h2>مشتریان ما را دوست دارند!</h2>
+            </div>
+            <div class="two-item-carousel owl-carousel owl-theme">
+                {% for testimonial in testimonials %}
+                <!--Testimonial Block-->
+                <div class="testimonial-block">
+                    <div class="quote-icon"><span class="icon fa fa-quote-right"></span></div>
+                    <div class="inner-box">
+                        <div class="text">{{ testimonial.text }}</div>
+                        <div class="lower-box clearfix">
+                            <div class="pull-left">
+                                <h3>{{ testimonial.client_name }}</h3>
+                                <div class="designation">{{ testimonial.designation }}</div>
+                            </div>
+                            <div class="pull-right">
+                                <div class="rating">
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= testimonial.rating %}
+                                            <span class="fa fa-star"></span>
+                                        {% else %}
+                                            <span class="fa fa-star-o"></span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--End Testimonail Section-->
+
+    <!--News Section-->
+    <section class="news-section">
+        <div class="auto-container">
+            <div class="sec-title">
+                <h2>آخرین چیز ها</h2>
+            </div>
+            <div class="three-item-carousel owl-carousel owl-theme">
+                {% for news in news_list %}
+                <!--News Block-->
+                <div class="news-block">
+                    <div class="inner-box">
+                        <div class="image">
+                            <a href="{% url 'portfolio:portfolio_detail' news.slug %}"><img src="{{ news.image.url }}" alt="{{ news.name }}"></a>
+                        </div>
+                        <div class="lower-content">
+                            <div class="post-date">{{ news.created_at|date:"d F Y" }}</div>
+                            <h3><a href="{% url 'portfolio:portfolio_detail' news.slug %}">{{ news.name }}</a></h3>
+                            <div class="text">{{ news.short_description|truncatewords:15 }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--End News Section-->
+
+
+
+{% endblock %}

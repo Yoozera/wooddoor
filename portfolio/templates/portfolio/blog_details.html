@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!--Sidebar Page Container-->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                <!--Content Side / Blog Single-->
+                <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="blog-single">
+
+                        <!--News Block Two-->
+                        <div class="news-block-two">
+                            <div class="inner-box">
+                                <div class="image">
+                                    <img src="{{ portfolio.image.url }}" alt="{{ portfolio.name }}">
+                                </div>
+                                <div class="lower-content">
+                                    <div class="post-date">ارسال شده در {{ portfolio.created_at|date:"d F Y" }}</div>
+                                    <h3>{{ portfolio.name }}</h3>
+                                    <div class="text">
+                                        {{ portfolio.content|safe }}
+                                    </div>
+                                </div>
+                                <!--post-share-options-->
+                                <div class="post-share-options clearfix">
+                                    <div class="pull-left tags">
+                                        {% for tag in portfolio.tags.all %}
+                                            <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="pull-right social-icon-three clearfix">
+                                        <div class="share">اشتراک گذاری</div>
+                                        <a href="#" class="facebook"><span class="fa fa-instagram"></span></a>
+                                        <a href="#" class="twitter"><span class="fa fa-telegram"></span></a>
+                                        <a href="#" class="linkedin"><span class="fa fa-whatsapp"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Sidebar Side-->
+                <div class="sidebar-side col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    {% include 'portfolio/includes/sidebar.html' %}
+                </div>
+                <!--End Sidebar Side-->
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

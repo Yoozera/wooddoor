@@ -1,0 +1,63 @@
+  <!--Sidebar Side-->
+{#            <div class="sidebar-side col-lg-3 col-md-3 col-sm-12 col-xs-12">#}
+                <aside class="sidebar default-sidebar">
+
+                    <!--Blog Category Widget-->
+                    <div class="sidebar-widget sidebar-blog-category">
+                        <div class="sidebar-title">
+                            <h2>دسته‌بندی ها</h2>
+                        </div>
+                        <ul class="blog-cat">
+                            {% for cat in categories %}
+                                <li><a href="{% url 'shop:category_list' cat.slug %}">{{ cat.name }}<span
+                                        class="count">{{ cat.shopp_products.count }}</span></a></li>
+                            {% empty %}
+                                <li>دسته‌بندی یافت نشد.</li>
+                            {% endfor %}
+
+
+                        </ul>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="sidebar-widget search-box">
+                        <form method="get" action="{% url 'shop:shop_list' %}">
+                            <div class="form-group">
+                                <input type="search" name="q" value="{{ request.get.q }}" placeholder="جستجو ..."
+                                       required>
+                                <button type="submit"><span class="icon fa fa-search"></span></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Top Related Posts -->
+                    <div class="sidebar-widget related-posts">
+                        <div class="sidebar-title">
+                            <h2>محصولات محبوب</h2>
+                        </div>
+                        {% for product in popular_products %}
+                            <div class="post">
+                                <figure class="post-thumb"><a href={% url 'shop:shop_detail' product.slug %}><img
+                                        src={{ product.image.url }} alt="{{ product.name }}"></a>
+                                </figure>
+                                <h4><a href={% url 'shop:shop_detail' product.slug %}>{{ product.name }}</a></h4>
+                                <div class="rating"><span class="fa fa-star"></span><span
+                                        class="fa fa-star"></span><span class="fa fa-star"></span><span
+                                        class="fa fa-star"></span><span class="fa fa-star light"></span></div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Popular Tags -->
+                    <div class="sidebar-widget popular-tags">
+                        <div class="sidebar-title"><h2>کلمات کلیدی</h2></div>
+                        {% for cat in categories %}
+                            <a href="{% url 'shop:category_list' cat.slug %}">{{ cat.name }}</a>
+                        {% empty %}
+                            <p>دسته‌بندی یافت نشد.</p>
+                        {% endfor %}
+                    </div>
+
+                </aside>
+{#            </div>#}
+            <!--End Sidebar Side-->

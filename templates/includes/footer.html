@@ -1,0 +1,120 @@
+{% load static %}
+<footer class="main-footer">
+    <div class="widgets-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <!--Big Column-->
+                <div class="big-column col-md-6 col-sm-12 col-xs-12">
+                    <div class="row clearfix">
+
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-7 col-sm-6 col-xs-12">
+                            <!--Logo Widget-->
+                            <div class="footer-widget logo-widget">
+                                <div class="widget-content">
+                                    <div class="footer-logo">
+                                        <a href="{% url 'core:home' %}"><img
+                                                src="{% static 'images/logo_shayan3.png' %}" alt=""></a>
+                                    </div>
+                                    <div class="text">شرکت درب چوبی شایان با بیش از سی سال سابقه
+                                        کیفتیت کار ما شده است
+                                    </div>
+                                    <ul class="social-icon-two">
+                                        <li><a href="https://wa.me/989130175390" target="_blank"><span
+                                                class="fa fa-whatsapp"></span></a></li>
+                                        <li><a href="https://instagram.com/shayanjamali_b1t" target="_blank"><span
+                                                class="fa fa-instagram"></span></a></li>
+                                        <li><a href="https://t.me/shayan_jamalisj" target="_blank"><span
+                                                class="fa fa-telegram"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--Footer Column / Links Widget-->
+                        <div class="footer-column col-md-5 col-sm-6 col-xs-12">
+                            <div class="footer-widget links-widget">
+                                <h2>دسترسی سریع</h2>
+                                <div class="widget-content">
+                                    <ul class="list">
+                                        <li><a href="{% url 'core:home' %}">خانه</a></li>
+                                        <li><a href="{% url 'aboutus:about-us' %}">درباره ما</a></li>
+                                        <li><a href="{% url 'services:service_list' %}">خدمات</a></li>
+                                        <li><a href="{% url 'shop:shop_list' %}">محصولات</a></li>
+                                        <li><a href="{% url 'portfolio:portfolio_list' %}">بلاگ ما/سوالات متداول</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!--Big Column-->
+                <div class="big-column col-md-6 col-sm-12 col-xs-12">
+                    <div class="row clearfix">
+
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                            <div class="footer-widget address-widget">
+                                <h2>آدرس ما</h2>
+                                <div class="widget-content">
+                                    <ul class="list-style-one">
+                                        <li><span class="icon fa fa-map-marker"></span>اصفهان - درچه - کوی بافندگان -
+                                            کوچه اصالت
+                                        </li>
+                                        <li><span class="icon fa fa-phone"></span><span
+                                                class="ltr-text">09130175390</span></li>
+                                        <li><span class="icon fa fa-envelope"></span>shayan_wooddor@gmail.com</li>
+                                        <li><span class="icon fa fa-clock-o"></span>9:00 ق.ظ - 5:00 ب.ظ جمعه تعطیل</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                            <div class="footer-widget subscribe-widget">
+                                <h2>ارتباط با ما</h2>
+                                <div class="widget-content">
+                                    <div class="newsletter-form">
+                                        <form method="post" action="{% url 'contact:submit' %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                {{ footer_contact_form.name }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ footer_contact_form.phone }}
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="theme-btn btn-style-one">ثبت اطلاعات
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Footer Bottom-->
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="column col-md-6 col-sm-6 col-xs-12">
+                    <div class="copyright">ارائه شده از تیم <a href="https://instagram.com/shayanjamali_b1t"
+                                                               target="_blank"
+                                                               target="_blank">یوزرا</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

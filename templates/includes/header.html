@@ -1,0 +1,129 @@
+{% load static %}
+
+<header class="main-header header-style-two">
+
+    <!--Header Top-->
+    <div class="header-top">
+        <div class="auto-container">
+            <div class="clearfix">
+
+                <!--Top Right-->
+                <div class="top-right">
+                    <ul class="top-info">
+                        <li class="email">shayan_door@gmail.com</li>
+                        <li class="number"><span class="ltr-text">0913  017 5390</span></li>
+                    </ul>
+                    <ul class="social-icon-two">
+                        <li><a href="https://wa.me/989130175390" target="_blank"><span class="fa fa-whatsapp"></span></a></li>
+                        <li><a href="https://instagram.com/shayanjamali_b1t" target="_blank"><span class="fa fa-instagram"></span></a></li>
+                        <li><a href="https://t.me/shayan_jamalisj" target="_blank"><span class="fa fa-telegram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Header-Upper-->
+    <div class="header-upper">
+        <div class="auto-container">
+            <div class="clearfix">
+
+                <div class="nav-outer clearfix">
+                    <!-- Main Menu -->
+                    <nav class="main-menu">
+                        <div class="navbar-header">
+                            <!-- Toggle Button -->
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="navbar-collapse collapse clearfix">
+                            <!--Left Nav-->
+                            <ul class="navigation clearfix">
+                                <li><a href="{% url 'core:home' %}">خانه</a></li>
+                                <li><a href="{% url 'aboutus:about-us' %}">درباره ما</a></li>
+                                <li><a href="{% url 'services:service_list' %}">خدمات </a></li>
+                                <li><a href="{% url 'products:product_list' %}">پروژه ها</a></li>
+                                <li><a href="{% url 'shop:shop_list' %}">محصولات</a></li>
+                                <li><a href="{% url 'portfolio:portfolio_list' %}">بلاگ ما/سوالات متداول</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <!--Search Box-->
+                    <div class="search-box-outer">
+                        <div class="dropdown">
+                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
+                                    class="fa fa-search"></span></button>
+                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
+                                <li class="panel-outer">
+                                    <div class="form-container">
+                                        <form method="get" action="{% url 'search:search' %}">
+                                            <div class="form-group">
+                                                <input type="search" name="q" value="{{ request.GET.q }}"
+                                                       placeholder="جستجو ..."
+                                                       required="">
+                                                <button type="submit" class="search-btn"><span
+                                                        class="fa fa-search"></span></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--End Header Upper-->
+
+    <!--Sticky Header-->
+    <div class="sticky-header">
+        <div class="auto-container clearfix">
+            <!--Logo-->
+            <div class="logo pull-left">
+                <a href="{% url 'core:home' %}" class="img-responsive"><img src="{% static 'images/logo_shayan3.png' %}" alt=""
+                                                                 title=""></a>
+            </div>
+
+            <!--Right Col-->
+            <div class="right-col pull-right">
+                <!-- Main Menu -->
+                <nav class="main-menu">
+                    <div class="navbar-header">
+                        <!-- Toggle Button -->
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="navbar-collapse collapse clearfix">
+                        <ul class="navigation clearfix">
+                            <li><a href="{% url 'core:home' %}">خانه</a></li>
+                             <li><a href="{% url 'aboutus:about-us' %}">درباره ما</a></li>
+                            <li><a href="{% url 'services:service_list' %}">خدمات</a></li>
+                             <li><a href="{% url 'products:product_list' %}">پروژه ها</a></li>
+                             <li><a href="{% url 'shop:shop_list' %}">محصولات</a></li>
+                             <li><a href="{% url 'portfolio:portfolio_list' %}">بلاگ ما/سوالات متداول</a></li>
+
+                        </ul>
+                    </div>
+                </nav><!-- Main Menu End-->
+            </div>
+
+        </div>
+    </div>
+    <!--End Sticky Header-->
+
+</header>

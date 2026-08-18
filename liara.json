@@ -1,3 +1,6 @@
 {
-  "platform": "django"
+  "platform": "django",
+  "hooks": {
+    "preDeploy": "python manage.py migrate && python manage.py collectstatic --noinput"
+  }
 }

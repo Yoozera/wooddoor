@@ -1,0 +1,6 @@
+{
+  "platform": "django",
+  "django": {
+    "cmd": "gunicorn wooddoor.wsgi:application --bind 0.0.0.0:$PORT"
+  }
+}

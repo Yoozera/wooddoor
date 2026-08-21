@@ -2,5 +2,11 @@
   "platform": "django",
   "hooks": {
     "preDeploy": "python manage.py migrate && python manage.py collectstatic --noinput"
-  }
+  },
+  "disks": [
+    {
+      "name": "disk",
+      "mountTo": "/usr/src/app/media"
+    }
+  ]
 }

@@ -186,7 +186,6 @@
                                 {% if related_products %}
                                     {% for product in related_products %}
                                         <div class="product-slide">
-                                            <!-- کلاس را از testimonial-slide به یک کلاس جدید تغییر دادیم -->
                                             <div class="inner">
                                                 <div class="product-image">
                                                     <!-- نمایش تصویر محصول -->
@@ -196,7 +195,7 @@
                                                 <div class="product-info"
                                                      style="text-align: center; padding: 15px 0;">
                                                     <h4 style="font-size: 16px; margin-bottom: 5px;">{{ product.name }}</h4>
-                                                    <p style="font-size: 13px; color: #666;">{{ product.short_description }}</p>
+                                                    <p style="font-size: 13px; color: #666;">{{  product.description|truncatechars:60 }}</p>
 
                                                     <!-- لینک به صفحه جزئیات محصول -->
                                                     <a href="{{ product.get_absolute_url }}"

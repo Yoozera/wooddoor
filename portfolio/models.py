@@ -2,12 +2,6 @@ from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
 
-
-
-
-
-
-
 class PortFolioCategory(models.Model):
     title = models.CharField(max_length=100,verbose_name='عنوان دسته بندی')
     slug = models.SlugField(unique=True,blank=True,verbose_name='اسلاگ')
@@ -71,7 +65,7 @@ class Portfolio(models.Model):
     class Meta:
         verbose_name = 'نمونه کار/پست'
         verbose_name_plural = 'نمونه کارها/پست ها'
-        ordering = ['-created_at']
+        ordering = ['created_at']
 
 class InstagramGallery(models.Model):
     image = models.ImageField(upload_to='portfolio/instagram/',verbose_name='تصویر')

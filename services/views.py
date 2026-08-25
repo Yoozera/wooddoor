@@ -21,16 +21,20 @@ class ServiceDetailView(DetailView):
     slug_url_kwarg = "slug"
 
     def get_queryset(self):
-        return super().get_queryset().prefetch_related('steps')
+
+        return super().get_queryset().prefetch_related('steps', 'shop_products')
 
     def get_context_data(self, **kwargs):
-
         context = super().get_context_data(**kwargs)
-        current_service = self.get_object()
+        service = self.object
+
+
         related_services = Service.objects.filter(
-            category__in=current_service.category.all(),
-        ).exclude(id=current_service.id).distinct()
+            category__in=service.category.all(),
+        ).exclude(id=service.id).distinct()
         context['related_services'] = related_services
-        context['related_products'] = self.object.products.all()
+
+
+        context['related_products'] = service.shop_products.all()
 
         return context

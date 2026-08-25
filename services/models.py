@@ -15,6 +15,12 @@ class ServiceCategory(models.Model):
 
 class Service(models.Model):
     category = models.ManyToManyField(ServiceCategory,related_name='services')
+    shop_products = models.ManyToManyField(
+        'shop.ShopProduct',
+        blank=True,
+        related_name='services',
+        verbose_name='محصولات مرتبط'
+    )
     name = models.CharField(max_length=100)
     icon_class = models.CharField(max_length=100,
                                   blank=True,
@@ -38,7 +44,7 @@ class Service(models.Model):
         return reverse('services:service_detail', kwargs={'slug': self.slug})
 
     class Meta:
-        ordering = ['name']
+        ordering = ['created_at']
         verbose_name = 'خدمات '
 
 

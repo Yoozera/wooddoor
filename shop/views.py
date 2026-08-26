@@ -28,7 +28,7 @@ class ShopProductListView(ListView):
         elif order_by == 'alphabetical':
             queryset = queryset.order_by('name')
         else:
-            queryset = queryset.order_by('is_popular', '-created_at')
+            queryset = queryset.order_by('-is_popular', '-created_at')
         return queryset
 
     def get_context_data(self, **kwargs):

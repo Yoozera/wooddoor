@@ -27,6 +27,10 @@ class ShopProductAdmin(admin.ModelAdmin):
         return ", ".join([cat.name for cat in obj.category.all()])
     display_category.short_description = 'دسته بندی ها'
 
+    def get_service(self, obj):
+        return ", ".join([service.name for service in obj.service.all()])
+    get_service.short_description = 'سرویس های مرتبط'
+
 
 @admin.register(ShopTag)
 class ShopTagAdmin(admin.ModelAdmin):

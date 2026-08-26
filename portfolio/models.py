@@ -65,7 +65,7 @@ class Portfolio(models.Model):
     class Meta:
         verbose_name = 'نمونه کار/پست'
         verbose_name_plural = 'نمونه کارها/پست ها'
-        ordering = ['created_at']
+        ordering = ['-created_at']
 
 class InstagramGallery(models.Model):
     image = models.ImageField(upload_to='portfolio/instagram/',verbose_name='تصویر')

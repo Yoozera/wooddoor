@@ -17,7 +17,7 @@ class ShopCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(ShopProduct)
 class ShopProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'display_category', 'created_at')
+    list_display = ('name', 'display_category','get_service', 'created_at')
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ('created_at',)
     search_fields = ('name', 'description')

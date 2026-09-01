@@ -28,7 +28,7 @@ class ShopProductAdmin(admin.ModelAdmin):
     display_category.short_description = 'دسته بندی ها'
 
     def get_service(self, obj):
-        return ", ".join([service.name for service in obj.service.all()])
+        return ", ".join([service.name for service in obj.services.all()])
     get_service.short_description = 'سرویس های مرتبط'
 
 

@@ -25,10 +25,11 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'products/protect-detail.html'
     context_object_name = 'product'
+    queryset = Product.objects.select_related('category', 'wood_type')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['related_products'] = Product.objects.filter(
             category=self.object.category
-        ).exclude(id=self.object.id)[:8]
+        ).exclude(id=self.object.id).select_related('category', 'wood_type')[:8]
         return context

@@ -50,7 +50,7 @@ class ShopProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        shop_product = self.get_object
+        shop_product = self.object
 
         similar_products = ShopProduct.objects.filter(
             category__in=shop_product.category.all()

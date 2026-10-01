@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+
+path("google555cb4c5a021e97e.html", TemplateView.as_view(template_name="google555cb4c5a021e97e.html", content_type="text/html")),
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),

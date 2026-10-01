@@ -32,7 +32,7 @@ class ShopProductAdminForm(forms.ModelForm):
         if commit:
             instance.services.set(self.cleaned_data['services'])
         else:
-            # اگه commit=False بود، باید بعد از save اصلی این خط صدا زده بشه
+
             self._save_services_later = True
         return instance
 

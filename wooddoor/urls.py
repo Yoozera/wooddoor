@@ -16,10 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from django.conf.urls.static import settings
+from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from django.http import HttpResponse
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import (
+    StaticViewSitemap, ProductSitemap, ServiceSitemap,
+    PortfolioSitemap, ShopProductSitemap,
+)
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'products': ProductSitemap,
+    'services': ServiceSitemap,
+    'portfolio': PortfolioSitemap,
+    'shop': ShopProductSitemap,
+}
 
 def google_verification(request):
     return HttpResponse(
@@ -33,6 +46,8 @@ urlpatterns = [
         "google555cb4c5a021e97e.html",
         google_verification
     ),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap'),
     path('products/', include('products.urls')),
     path('services/', include('services.urls')),
     path('portfolio/', include('portfolio.urls')),
